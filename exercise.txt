@@ -1,0 +1,11 @@
+list
+---------------------------------------
+1) create a list to store your friends name in list (minimum 5)
+    - display whole list 
+    - display 1st friend 
+    - display last friend
+    - replace 1st friend with some other value 
+    - remove last value from list 
+    - display 1st 3 value in list 
+    - display last 3 value in list 
+    
