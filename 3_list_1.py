@@ -1,8 +1,7 @@
 #1st example of list
 teams = ['India','Australia','England','South Afferica','newz land','sri lanka','west indies','Bangladesh','Afghanistan',100,False,3.14]
 #          0       1           2           3               4               5           6
-#display list
-print(teams)
+print(teams) #display list
 print(teams[0]) #india
 print(teams[1]) #Australia
 print(teams[3]) #South Afferica
