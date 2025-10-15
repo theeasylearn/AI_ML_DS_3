@@ -19,3 +19,21 @@ list
     remove friend whose name is samir 
     clear friend list 
 
+3) tuple 
+    write a program to create tuple that all your family members name 
+    try to insert new value 
+    try to delete value 
+    try to change name 
+    print family 
+
+4) dictionary 
+    create dictionary of your college & store 
+        name, 
+        pricipal name 
+        establishment year 
+        area 
+        courses 
+    update courses name 
+    remove establishment year 
+    print dictionary 
+    
