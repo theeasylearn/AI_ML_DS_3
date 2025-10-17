@@ -37,3 +37,23 @@ list
     remove establishment year 
     print dictionary 
     
+5) Create Dictionary to store your college details like name, trust, pricipal, establishment year, address, city, courses etc 
+    print dictionary 
+    update city using update method 
+    add state using update methods 
+    display all keys using keys method 
+    display all values using values method 
+    remove state using pop method 
+    remove last item using pop item method 
+    remove all key value pair 
+    copy dictionary using copy method 
+
+6) create a python program to create 2 set. 
+    1 set has list of sports include in olympic 2016
+    2 set has list of sports include in olympic 2022
+
+    display both set 
+    findout unique sports in both set & display it 
+    findout common sports in both set & display it 
+    findout sports in olympic 2022 but not in 2016 & display it 
+    
