@@ -1,5 +1,12 @@
-#create dictionary
-student =  {"name":"yash","surname":"joshi","age":21,"weight":50.99,'gender':True,'car':None}
+#create dictionary using {} braces
+student =  {
+            "name":"yash",
+            "surname":"joshi",
+            "age":21,
+            "weight":50.99,
+            'gender':True,
+            'car':None
+            }
 print(student)
 
 #print only name 

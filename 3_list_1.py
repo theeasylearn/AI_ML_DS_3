@@ -1,4 +1,4 @@
-#1st example of list
+#1st example of list,  list is created and identefied by [] brackets
 teams = ['India','Australia','England','South Afferica','newz land','sri lanka','west indies','Bangladesh','Afghanistan',100,False,3.14]
 #          0       1           2           3               4               5           6
 print(teams) #display list
