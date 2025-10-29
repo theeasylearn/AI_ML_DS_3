@@ -79,6 +79,13 @@ output  invalid input
     input 2 : tuesday 
     input 7 : sunday 
 
+4) write a program to findout whether given year is millennium year or not. using if else decision making statements.
+
+5) write a program to findout elder brother from two brother age. 
+
+6) write a program to findout which is cheaper approach to buy IPhone 17 pro max.  consider use is going usa should he buy iphone from usa or from india. 
+
+7) write a program to decide which is better approach to go from ahmedabad to delhi. by car or by train. person has his own petrol car 
 
 4) 
 Write a program that takes a 5 subject marks from user. calculate total and average  and prints the grade using the following conditions:
