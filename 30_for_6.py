@@ -10,3 +10,13 @@ teams = {
     "Bangladesh": {"Litton":63, "Tamim":71, "Shanto":77, "Mushfiqur":66, "Mahmudullah":48, "Hridoy":36, "Mehidy":28, "Taskin":13, "Mustafizur":9, "Shoriful":8, "Hasan":10},
     "Afghanistan": {"Gurbaz":74, "Ibrahim":68, "Shahidi":82, "Rahmat":55, "Nabi":44, "Omarzai":37, "Rashid":31, "Mujeeb":18, "Naveen":11, "Farooqi":9, "Noor":7}
 }
+print(teams['india']['rohit'])
+print(teams['Australia']['Warner'])
+for team in teams:
+    print(team)
+    for player in teams[team]:
+        print(f"{player} = {teams[team][player]}")
+    print("-"*100)
+
+#findout team wise total and findout which team has made maximum runs 
+#findout team wise total and findout which team has made minimum runs 
