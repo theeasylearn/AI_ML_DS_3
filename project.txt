@@ -1,0 +1,3 @@
+1) create python script that will read & speak cricket match score at every minute of selected match 
+(use text to speech and request and beautifulsoup and pygame)
+
