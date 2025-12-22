@@ -5,7 +5,8 @@ count = 0
 word = 1
 vowels = 0
 list = ['a','e','i','o','u','A','E','I','O','U']
-
+#task 
+#count also symbol and digits 
 for letter in line:
     count+=1
     if letter == ' ':

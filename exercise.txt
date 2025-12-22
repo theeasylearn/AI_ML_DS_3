@@ -203,9 +203,14 @@ toLowerCase('Apple','bAnana','ManGO','KIWI','graps')
 output 
     apple banana mango kiwi graps
 
+
+3) create function getInches which has meter, foot and inches as argument this function should return total inches. note foot and inches are default aguments whose default value should be zero 
+
+3.2) create function getGrams which has ton,kg, grams as argument this function should return total grams. note kg and grams are default aguments whose default value should be zero 
+
+
 2) create function that returns average of player score of all 11 players (arbitary arguments)
 
-3) create function getSeconds which has hours, minutes and seconds which return total seconds 
 
 4) create lambda function which return compound interest of given amount, rate, year 
 
