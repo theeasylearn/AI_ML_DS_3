@@ -220,3 +220,12 @@ output
     isCityExist('rajkot',['Bombay','Baroda','rajkot']) # true 
 
     
+7) use filter function in below list 
+    1) filter perfect numbers 
+    2) filter armstrong numbers 
+    3) filter both non perfect & non armstrong number 
+    [6, 28, 153, 370, 371, 407, 12, 45, 89, 100]
+
+8) use map function to findout binary of each number in list 
+    [10,20,40,80,100]
+
