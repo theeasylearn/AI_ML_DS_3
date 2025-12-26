@@ -229,3 +229,8 @@ output
 8) use map function to findout binary of each number in list 
     [10,20,40,80,100]
 
+recursion
+---------------------------------------
+1) write recursive function to convert decimal into binary 
+1) write recursive function to convert decimal into octal
+1) write recursive function to convert decimal into hexadecimal
