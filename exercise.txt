@@ -243,6 +243,13 @@ Module
         km to Mile 
     create other file to import and call above methods and display result 
 
+2) create module which has below method. name of the module finacial_tools module
+    that return simple interest of given amount, rate, year     
+    that return compound interest of given amount, rate, year     
+    that return monthly EMI Amount of given loan amount, rate, tenure in years 
+
+
+
 2) create folder storage in c drive. create file conversion.py file in it 
     create functions into it 
         toKB  converts given bytes into KB
