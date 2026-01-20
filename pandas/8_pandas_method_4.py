@@ -1,0 +1,11 @@
+import pandas as pd 
+s1 = pd.Series([1,2,3,4,2,4,None,10,None])
+print(s1)
+print(s1.mode())
+print(s1.var())
+print(s1.std())
+print(s1.count())
+print(s1.isnull())
+print(s1.notnull())
+print(s1.fillna(1))
+print(s1.dropna())
