@@ -1,5 +1,4 @@
 import pandas as pd 
-
 s1 = pd.Series([100,20,30,40,10,20,30,40])
 print(s1)
 print(s1.duplicated())
