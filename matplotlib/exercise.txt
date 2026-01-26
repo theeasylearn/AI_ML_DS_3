@@ -1,0 +1,7 @@
+1) create chart to display no of ODI PLAYED in each year in mans cricket between year 2000 to 2025
+2) create chart to display no of TEST PLAYED in each year in mans cricket between year 2000 to 2025
+3) create chart to display no of T20 PLAYED in each year in mans cricket between year 2000 to 2025
+4) create chart to display no of ODI,TEST,T20 PLAYED in each year in mans cricket between year 2000 to 2025
+
+
+
