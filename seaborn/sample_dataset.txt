@@ -1,0 +1,40 @@
+https://gist.github.com/theeasylearn/821867f6e3c201a6e7c46a9af680be96
+
+| Chart Type      | Dataset Name   | What It Contains                                                               |
+| --------------- | -------------- | ------------------------------------------------------------------------------ |
+| Scatter Plot    | anscombe       | Four small datasets with identical statistics but different distributions.     |
+| Scatter Plot    | diamonds       | Diamond pricing data with carat, cut, color, clarity, depth, table, and price. |
+| Scatter Plot    | geyser         | Eruption duration and waiting time between eruptions.                          |
+| Scatter Plot    | iris           | Measurements of iris flowers (sepal, petal, species).                          |
+| Scatter Plot    | mpg            | Car fuel efficiency data including mpg, horsepower, weight, origin.            |
+| Scatter Plot    | penguins       | Penguin measurements such as bill length, flipper length, body mass, species.  |
+| Scatter Plot    | planets        | Exoplanet data including orbital period, mass, distance, and discovery method. |
+| Scatter Plot    | tips           | Restaurant bills and tip amounts with customer details.                        |
+| Regression Plot | anscombe       | Demonstrates regression differences despite identical summary statistics.      |
+| Regression Plot | mpg            | Relationship between fuel efficiency and other car features.                   |
+| Bar Plot        | attention      | Reaction time under different attention conditions.                            |
+| Bar Plot        | car_crashes    | US state-wise accident statistics including alcohol and speeding factors.      |
+| Bar Plot        | exercise       | Pulse rate changes during different exercise types.                            |
+| Bar Plot        | taxis          | Taxi trip data such as fare, distance, payment type.                           |
+| Bar Plot        | titanic        | Passenger survival statistics by class, gender, etc.                           |
+| Box Plot        | attention      | Distribution of reaction times across groups.                                  |
+| Box Plot        | diamonds       | Distribution of diamond prices by cut or clarity.                              |
+| Box Plot        | iris           | Distribution of flower measurements by species.                                |
+| Box Plot        | penguins       | Body mass and flipper length distribution by species.                          |
+| Box Plot        | tips           | Tip distribution by day, time, or smoker status.                               |
+| Box Plot        | titanic        | Age or fare distribution by passenger class or survival.                       |
+| Violin Plot     | tips           | Detailed distribution of tips across categories.                               |
+| Histogram       | diamonds       | Distribution of diamond prices or carat values.                                |
+| Histogram       | geyser         | Distribution of eruption duration or waiting time.                             |
+| Histogram       | planets        | Distribution of planet mass or orbital period.                                 |
+| Histogram       | taxis          | Distribution of fare amounts or trip distances.                                |
+| Line Plot       | dots           | Accuracy trends across coherence levels.                                       |
+| Line Plot       | exercise       | Pulse rate over time during exercise.                                          |
+| Line Plot       | flights        | Monthly passenger counts over years.                                           |
+| Line Plot       | fmri           | Brain activity signals over time.                                              |
+| Line Plot       | seaice         | Arctic sea ice extent trends over time.                                        |
+| Heatmap         | brain_networks | Brain region correlation matrix data.                                          |
+| Heatmap         | car_crashes    | State-wise accident comparison.                                                |
+| Heatmap         | flights        | Monthly passenger counts shown in matrix form.                                 |
+| Count Plot      | titanic        | Count of passengers by class, gender, or survival status.                      |
+| Pair Plot       | iris           | Pairwise relationships between flower measurements.                            |
