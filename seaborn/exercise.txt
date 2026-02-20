@@ -4,3 +4,6 @@ create boxplot chart using seaborn use sample data from seaborn
 2) diamonds
 3) penguins
 4) titanic
+
+1 create Histogram chart for virat kohli ODI career 
+2 create Histogram chart for Steave smith ODI career 
