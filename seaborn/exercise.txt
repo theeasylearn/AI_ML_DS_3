@@ -11,3 +11,4 @@ create boxplot chart using seaborn use sample data from seaborn
 4 create KDE chart of buying car 1st time 
 5 create KDE chart of doing marriage 1st time in india 
 6 create KDE chart of taking divorce in which year after marriage.
+7 create strip_plot chart of runs scored by different team in ipl since 2008
