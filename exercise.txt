@@ -260,3 +260,7 @@ Module
     import conversion file 
     call functions into it 
 
+exception handling 
+--------------------------
+1) write a program to accept weight from user in kg. calculate BMI(body to mass index) and display it. handle all built in exception 
+
