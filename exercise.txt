@@ -264,3 +264,7 @@ exception handling
 --------------------------
 1) write a program to accept weight from user in kg. calculate BMI(body to mass index) and display it. handle all built in exception 
 
+Date time 
+1) write a program to findout young person from 3 person using give birth date data. 
+2) write a program to findout age of father when her child become 21 year old from both person birth dates and also findout how many years both will earn together if we can consider retirement age 65
+
