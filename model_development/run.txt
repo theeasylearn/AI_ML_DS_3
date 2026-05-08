@@ -1,0 +1,2 @@
+python main.py ^ --data_root "C:/Users/ankit/Downloads/CLWD" ^--epochs 15 ^--batch_size 16
+python main.py --data_root "C:/Users/ankit/Downloads/CLWD" --batch_size 8 --epochs 15

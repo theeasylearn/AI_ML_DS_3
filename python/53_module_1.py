@@ -1,5 +1,5 @@
 #import currency module
-import currency 
+import python.currency as currency 
 rs = int(input("Enter rupees to convert it into different currencies "))
 
 dollar = currency.toDollar(rupees=rs)
