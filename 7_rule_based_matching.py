@@ -1,8 +1,10 @@
 import spacy as sa 
-
+from spacy.matcher import Matcher
 # nlp = sa.load('en_core_web_sm')
 # python -m spacy download en_core_web_lg
 nlp = sa.load('en_core_web_lg')
+#create Matcher object
+matcher = Matcher(nlp.vocab)
 
 text = """
 1. Bowler runs in, defended back to him. Score: 0/0 (0.1)
@@ -16,16 +18,19 @@ text = """
 9. Caught behind. WICKET. Score: 42/1 (5.1)
 10. Lofted over long-on for SIX. Score: 59/1 (6.3)
 """
-
 #create doc object
-
 document = nlp(text)
+pattern = [
+    {"LOWER": "drive", "POS": "NOUN"},
+    {"LOWER": "for", "POS": "ADP"},
+    {"TEXT": "FOUR"}
+]
+matcher.add('four_run',[pattern])
+print(pattern)
 
-#fetch each and every entity in text
+matches = matcher(document)
+print(len(matches))
+for match_id,start,end in matches:
+    span = document[start:end]
+    print(f"{span.text} start {start} end {end}")
 
-count = 0
-for entity in document.ents:
-    print(f"Text = {entity.text:<30} Label = {entity.label_} ")
-    count = count + 1
-
-print("No of entity found = ",count)
