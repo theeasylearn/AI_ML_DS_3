@@ -5,7 +5,6 @@ from spacy.matcher import Matcher
 nlp = sa.load('en_core_web_lg')
 #create Matcher object
 matcher = Matcher(nlp.vocab)
-
 text = """
 1. Bowler runs in, defended back to him. Score: 0/0 (0.1)
 2. Left outside off stump. Score: 0/0 (0.2)
