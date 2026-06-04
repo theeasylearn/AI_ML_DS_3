@@ -1,0 +1,8 @@
+1) create custom component that will return return True or False  after check food recipe. return true if recipe is vegan otherwise False 
+
+2) create custom component that will return return True or False  after check food recipe. return true if recipe is non veg otherwise False 
+
+3) create custom component that will return return Personal contact detail like Contact No, Email Address, indian pincode, state, and latitude and longitude, gender, martial status, 
+
+
+
