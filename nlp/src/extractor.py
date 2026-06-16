@@ -16,7 +16,6 @@ from src.certification import extract_certifications
 def extract_resume(text, filename=""):
     """Main resume extraction pipeline"""
     doc = preprocess_resume(text)
-    
     result = {
         "filename": filename,
         "contact": extract_contact_info(doc),
@@ -26,5 +25,4 @@ def extract_resume(text, filename=""):
         "certifications": extract_certifications(doc),
         "extracted_at": "2026"
     }
-    
     return result

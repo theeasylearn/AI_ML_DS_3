@@ -71,7 +71,7 @@ if uploaded_file is not None:
             
             json_str = json.dumps(result, indent=2)
            
-        store_data_into_database(result)
+        #store data into database
         st.download_button("Download JSON", json_str, "result.json", "application/json")
         if os.path.exists(temp_path):
             os.remove(temp_path)

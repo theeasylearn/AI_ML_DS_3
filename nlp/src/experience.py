@@ -7,7 +7,6 @@ experience_header = [
 def extract_experience(doc):
     experience = []
     exp_section = False
-    
     for sent in doc.sents:
         text = sent.text.strip()
         text = text.lower()
@@ -20,5 +19,6 @@ def extract_experience(doc):
                     "description": text[:300],
                     "company": None,
                     "duration": None
-                })            
+                })   
+                        #  task detect company name and duration 
     return experience

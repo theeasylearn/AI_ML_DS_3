@@ -6,7 +6,7 @@ nlp = spacy.load("en_core_web_sm")
 def load_skills():
     try:
         with open("skills_list.txt", "r", encoding="utf-8") as f:
-            return [line.strip() for line in f if line.strip()]
+            return [line for line in f if line.strip()]
     except:
         return ["Python", "SQL", "JavaScript", "Machine Learning", "Data Analysis", 
                 "Excel", "Power BI", "Git", "Django", "HTML", "CSS", "Leadership"]
@@ -15,12 +15,13 @@ def extract_skills(doc):
     matcher = PhraseMatcher(nlp.vocab, attr="LOWER")
     skills = load_skills()
     
+    # load lines that has skills 
     patterns = [nlp.make_doc(skill) for skill in skills]
     matcher.add("SKILLS", patterns)
     
     matches = matcher(doc)
-    extracted = []
-    
+    extracted = [] # replace it with set 
+    # //extract exact skill 
     for _, start, end in matches:
         skill = doc[start:end].text
         if skill not in extracted:

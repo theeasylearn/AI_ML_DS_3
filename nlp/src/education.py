@@ -16,10 +16,10 @@ def extract_education(doc):
     "Paper Publication", "IEEE", "Springer", "Academic Profile", "Educational Qualifications"]
 
     for sent in doc.sents:
-        text = sent.text.strip()
-        text = text.lower()
-        if any(kw.lower() in text for kw in degree_keywords):
-            year = re.search(r'(19|20)\d{2}', text)
+        text = sent.text.strip().lower()
+        # text = text.lower()
+        if any(keywords.lower() in text for keywords in degree_keywords):
+            year = re.search(r'(19|20)\d{2}',text)
             education.append({
                 "degree": text[:280],
                 "year": year.group() if year else None
