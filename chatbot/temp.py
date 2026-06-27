@@ -1,4 +1,4 @@
-query = "location"
+query = "address"
 from knowledge_base import knowledge
 for topics in knowledge:
     for key in knowledge[topics]:
