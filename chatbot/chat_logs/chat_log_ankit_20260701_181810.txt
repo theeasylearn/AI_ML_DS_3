@@ -1,0 +1,39 @@
+EASYLEARN ACADEMY - CHATBOT CONVERSATION LOG
+Start Time: 2026-07-01 18:18:10
+Name: ankit
+Email: ankit@gmail.com
+Mobile: 1234567890
+============================================================
+
+[2026-07-01 18:18:24]
+You: who can join data science?
+Bot: Sorry, I couldn't fetch the latest information from the internet right now. (Error code: 400 - {'code': 'invalid-argument', 'error': 'Model not found: grok-2)
+
+[2026-07-01 18:20:48]
+You: 
+Bot: Okay. Please feel free to ask another question or rephrase.
+
+[2026-07-01 18:20:58]
+You: do i need computer to learn python
+Bot: Here are the topics covered in Python Programming: Covers core Python, advanced concepts, and database integration with live projects.
+
+[2026-07-01 18:21:16]
+You: should i know english?
+Bot: Sorry, I couldn't fetch the latest information from the internet right now. (Error code: 400 - {'code': 'invalid-argument', 'error': 'Model not found: grok-2)
+
+[2026-07-01 18:23:02]
+You: python 
+Bot: Yes, we provide Python Programming.
+* Duration: 3 months
+* Fees: ₹15,000
+* Topics: Covers core Python, advanced concepts, and database integration with live projects.
+
+[2026-07-01 18:23:05]
+You: bye
+Bot: Goodbye, take care!
+
+
+============================================================
+CONVERSATION ENDED: 2026-07-01 18:23:05
+Interested Courses: Data Science, Python Programming
+Preferred Timings: Not specified

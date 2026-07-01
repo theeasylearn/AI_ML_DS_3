@@ -1,0 +1,24 @@
+EASYLEARN ACADEMY - CHATBOT CONVERSATION LOG
+Start Time: 2026-07-01 18:12:41
+Name: mohit
+Email: mohit@gmail.com
+Mobile: 1211121112
+============================================================
+
+[2026-07-01 18:13:09]
+You: who can join python course
+Bot: Sorry, I couldn't fetch the latest information from the internet right now. (Error code: 429 - {'error': {'message': 'You exceeded your current quota, please)
+
+[2026-07-01 18:13:51]
+You: do i need computer?
+Bot: Okay. Please feel free to ask another question or rephrase.
+
+[2026-07-01 18:13:54]
+You: bye
+Bot: Goodbye, take care!
+
+
+============================================================
+CONVERSATION ENDED: 2026-07-01 18:13:54
+Interested Courses: Python Programming
+Preferred Timings: Not specified

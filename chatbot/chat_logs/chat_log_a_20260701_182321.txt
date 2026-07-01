@@ -1,0 +1,15 @@
+EASYLEARN ACADEMY - CHATBOT CONVERSATION LOG
+Start Time: 2026-07-01 18:23:21
+Name: a
+Email: b
+Mobile: 1
+============================================================
+
+[2026-07-01 18:23:26]
+You: who can learn python
+Bot: Here are the topics covered in Python Programming: Covers core Python, advanced concepts, and database integration with live projects.
+
+[2026-07-01 18:23:35]
+You: do i need laptop?
+Bot: Sorry, I couldn't fetch the latest information from the internet right now. (Error code: 400 - {'code': 'invalid-argument', 'error': 'Model not found: grok-3)
+

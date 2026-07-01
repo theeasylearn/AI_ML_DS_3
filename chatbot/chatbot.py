@@ -4,10 +4,17 @@ from knowledge_base import knowledge
 import datetime
 import smtplib
 import os
+import re
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
+
+try:
+    import openai
+except ImportError:
+    openai = None
+    print("Warning: 'openai' package not installed. Run: pip install openai  (required for Grok)")
 
 nlp = sa.load('en_core_web_sm')
 
@@ -20,6 +27,17 @@ SENDER_PASSWORD = "egzt szmf aklt yjsx"   # <-- CHANGE THIS (Gmail App Password)
 
 RECEIVER_EMAIL = "theeasylearn@gmail.com"
 
+# ===================== GROK / xAI CONFIG (for dynamic course questions) =====================
+# Uses Grok (by xAI) - good alternative when you hit ChatGPT quota limits.
+# 1. pip install openai
+# 2. Get your xAI API key here: https://console.x.ai/
+#    (Free tier available with good limits)
+#    Keys start with "xai-"
+# You can also set it via environment variable: XAI_API_KEY
+XAI_API_KEY = os.getenv("XAI_API_KEY", "")
+XAI_MODEL = "grok-3-1212"   # Good balance. Alternatives: "grok-3", "grok-2"
+
+
 def greetings(message):
     greet_list = ['hello', 'hi', 'hey', 'howdy', 'greetings', 'good morning', 'good afternoon', 'good evening', 'good day', "what's up", 'whats up', 'how are you', "how's it going", 'how do you do', 'nice to meet you', 'welcome', 'pleased to meet you', 'how have you been', 'good to see you', 'long time no see', 'good to meet you', 'hiya', 'yo', 'sup']
     return message.strip().lower() in greet_list
@@ -29,7 +47,7 @@ def goodbye(message):
     return message.strip().lower() in bye_list
 
 def preprocess(doc):
-    global batch_timing_interest
+    global batch_timing_interest, interested_courses
     best_answer = None
     best_score = 0
     
@@ -69,7 +87,19 @@ def preprocess(doc):
         return f"Our official website is {contact_data['website']}."
 
     # ─────────────────────────────────────────────────────────
-    # STEP 2: SPECIFIC COURSE INTENT LOOKUP
+    # NEW STEP: DYNAMIC COURSE QUESTIONS via Grok (xAI)
+    # Handles: who can join, salary for freshers, non-IT, minimum qualification,
+    # maths requirement, which course for coding, need computer, english etc.
+    # ─────────────────────────────────────────────────────────
+    dynamic_advice = get_dynamic_course_advice(doc.text)
+    if dynamic_advice:
+        course_name, _ = extract_course_name(user_question)
+        if course_name:
+            interested_courses.add(course_name)
+        return dynamic_advice
+
+    # ─────────────────────────────────────────────────────────
+    # STEP 2: SPECIFIC COURSE INTENT LOOKUP (fees, duration, topics)
     # ─────────────────────────────────────────────────────────
     courses_dict = knowledge['topics']['courses'].get('list', {})
     
@@ -264,6 +294,130 @@ def handle_unknown_question(question):
         return msg
 
 
+# ===================== GROK / xAI DYNAMIC COURSE ADVICE HELPERS =====================
+
+def configure_grok_if_needed():
+    """Prompt user for xAI / Grok API key at startup if not configured."""
+    global XAI_API_KEY
+    if openai is None:
+        return
+    if (not XAI_API_KEY or "your-key" in XAI_API_KEY.lower() or not XAI_API_KEY.startswith("xai-")):
+        print("\n[Grok / xAI Setup] To answer detailed course questions (eligibility, salary, maths, non-IT etc.) using Grok:")
+        ans = input("Configure xAI API key now? (y/n): ").strip().lower()
+        if ans in ["y", "yes"]:
+            XAI_API_KEY = input("Paste your xAI API key (starts with xai-): ").strip()
+        else:
+            print("  → Dynamic answers will use fallback messages.\n")
+
+
+def extract_course_name(question_lower: str):
+    """Find if user mentioned a specific course. Returns (display_name, key) or (None, None)."""
+    courses_dict = knowledge['topics']['courses'].get('list', {})
+    for ckey, cinfo in courses_dict.items():
+        kws = [kw.lower() for kw in cinfo.get('keywords', [])] + [ckey.lower()]
+        for kw in kws:
+            if kw in question_lower:
+                return cinfo['name'], ckey
+    # Also try common spoken variants
+    spoken_map = {
+        'full stack': 'mern', 'fullstack': 'mern', 'mern stack': 'mern',
+        'ai': 'ai_ml', 'machine learning': 'ai_ml', 'artificial intelligence': 'ai_ml',
+        'data science': 'data_science', 'datascience': 'data_science',
+        'web design': 'web_design', 'web designing': 'web_design',
+        'android': 'android', 'mobile app': 'android',
+        'cyber': 'cyber_security', 'ethical hacking': 'cyber_security',
+        'ui ux': 'ui_ux', 'uiux': 'ui_ux', 'ux': 'ui_ux'
+    }
+    for phrase, ckey in spoken_map.items():
+        if phrase in question_lower:
+            return courses_dict.get(ckey, {}).get('name'), ckey
+    return None, None
+
+
+def ask_grok(system_prompt: str, user_prompt: str) -> str:
+    """Call Grok via xAI API (OpenAI-compatible endpoint)."""
+    if openai is None or not XAI_API_KEY or not XAI_API_KEY.startswith("xai-"):
+        return None  # caller will handle fallback
+
+    try:
+        client = openai.OpenAI(
+            api_key=XAI_API_KEY,
+            base_url="https://api.x.ai/v1"
+        )
+        resp = client.chat.completions.create(
+            model=XAI_MODEL,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
+            ],
+            temperature=0.65,
+            max_tokens=280
+        )
+        return resp.choices[0].message.content.strip()
+    except Exception as e:
+        return f"Sorry, I couldn't fetch the latest information from the internet right now. ({str(e)[:80]})"
+
+
+def get_dynamic_course_advice(user_question: str) -> str | None:
+    """
+    Detects the special course-related questions listed by user.
+    If matched, fetches fresh answer via Grok (xAI).
+    """
+    q = user_question.lower().strip()
+
+    # Keywords that signal the listed question types (1-8)
+    advice_triggers = [
+        'who can join', 'eligibility', 'eligible', 'can i join', 'suitable for whom',
+        'salary', 'ctc', 'package', 'fresher', 'freshers', 'expected salary', 'what salary',
+        'non it', 'non-it', 'nonit', 'non it candidate', 'commerce', 'arts', 'other field',
+        'minimum qualification', 'bare minimum', 'what qualification', '10th', '12th pass',
+        'maths', 'math', 'mathematics', 'need maths', 'expert in math',
+        'learn coding', 'which course should i', 'which course to select', 'best course for coding',
+        'need a computer', 'need laptop', 'have computer', 'do i need pc',
+        'know english', 'english required', 'good in english', 'language required'
+    ]
+
+    if not any(trigger in q for trigger in advice_triggers):
+        return None
+
+    course_name, course_key = extract_course_name(q)
+
+    # Build context-aware prompt
+    if course_name:
+        context = f"the {course_name} course"
+    else:
+        context = "IT courses (Python, Full Stack, Data Science, AI/ML, etc.)"
+
+    system = (
+        "You are an honest and encouraging career counsellor for EasyLearn Academy, "
+        "an IT training institute in Bhavnagar, Gujarat. "
+        "Answer questions about course eligibility, fresher salaries in India, prerequisites, "
+        "suitability for non-IT / commerce / arts students, and whether maths or English is required. "
+        "Be practical, realistic, and a bit direct (Grok style). Use current Indian job market context (2025-2026). "
+        "Keep replies short, friendly, and in plain English (4-8 sentences max)."
+    )
+
+    user_prompt = f"""User question about {context}:
+"{user_question}"
+
+Please give a direct and helpful answer. 
+If talking about salary, mention realistic fresher CTC range in Indian companies (product vs service, tier-1/2/3 cities).
+If about eligibility or background, clearly say whether non-IT students can join and what minimum qualification is needed.
+If about coding which course to pick, give 1-2 best recommendations with reason.
+"""
+
+    ai_answer = ask_grok(system, user_prompt)
+    if ai_answer:
+        return ai_answer
+
+    # Fallback message when API not available
+    return (
+        "For the most accurate and latest information on eligibility, salaries, and requirements, "
+        "I recommend checking with our counsellors or visiting https://theeasylearnacademy.com/. "
+        "In general, most of our courses welcome students from any background (10th/12th pass and above)."
+    )
+
+
 # ===================== MAIN LOOP =====================
 
 # --- Task 1: Collect user details at start ---
@@ -284,6 +438,9 @@ if (not SENDER_EMAIL or "your_" in SENDER_EMAIL or "@" not in SENDER_EMAIL or
         SENDER_PASSWORD = input("  App Password (input hidden in real but shown here for demo): ").strip()
     else:
         print("  (Emails will be simulated. Edit the script or re-run to provide credentials.)\n")
+
+# Configure Grok (xAI) for dynamic answers (new feature)
+configure_grok_if_needed()
 
 conversation_start = datetime.datetime.now()
 
@@ -306,7 +463,8 @@ with open(log_path, "w", encoding="utf-8") as f:
     f.write(f"Mobile: {user_mobile}\n")
     f.write("=" * 60 + "\n\n")
 
-print(f"\nBot: Thank you, {user_name}! How can I help you today? (type 'bye' to end chat)\n")
+print(f"\nBot: Thank you, {user_name}! How can I help you today?\n")
+print("Bot: (Ask about course fees, duration, or questions like 'who can join python?', 'salary after data science', 'non IT for AI ML', etc. Powered by Grok)\n")
 
 while True:
     question = input("You : ")

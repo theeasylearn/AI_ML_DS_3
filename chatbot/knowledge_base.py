@@ -180,7 +180,7 @@ knowledge = {
         # ─────────────────────────────────────────────
         'eligibility': {
             'keywords': ['eligibility', 'eligible', 'qualify', 'qualification', 'who can join', 'requirements', 'criteria', 'minimum', 'degree', 'student', 'fresher', 'beginner', 'experienced', 'professional', 'working', 'college', '12th', 'graduate', 'undergraduate', 'age', 'background', 'can i join', 'prerequisite', 'prior knowledge', 'anyone', 'no experience'],
-            'answer': """Anyone can join - 10th/12th pass students, college students, fresh graduates, and working professionals. No prior coding experience is required for beginners."""
+            'answer': """Most of our courses are open to 10th/12th pass students, graduates, and working professionals from any background. No prior coding experience needed for beginner courses. For the latest details on who can join a specific course, salary expectations, or maths/English requirements, just ask me — I can check current information for you."""
         },
 
         # ─────────────────────────────────────────────
