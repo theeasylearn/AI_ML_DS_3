@@ -1,0 +1,36 @@
+EASYLEARN ACADEMY - CHATBOT CONVERSATION LOG
+Start Time: 2026-07-01 17:47:50
+Name: mayank santwani
+Email: mayank@gmail.com
+Mobile: 1234567890
+============================================================
+
+[2026-07-01 17:48:04]
+You: i want to learn python
+Bot: Here are the topics covered in Python Programming: Covers core Python, advanced concepts, and database integration with live projects.
+
+[2026-07-01 17:48:22]
+You: tell me everything about python course
+Bot: The fee for the Python Programming course is ₹15,000.
+
+[2026-07-01 17:48:32]
+You: python duration
+Bot: The duration of the Python Programming course is 3 months.
+
+[2026-07-01 17:48:44]
+You: where is your class?
+Bot: Our institute location is: Eva Surbhi Mall, 105, Waghawadi Road, opposite Aksharwadi Temple, Bhavnagar, Gujarat - 364002..
+
+[2026-07-01 17:49:25]
+You: do you have lift facility?
+Bot: Thank you. Appointment request for 2026-07-12 at 11 has been sent to our team.
+
+[2026-07-01 17:50:43]
+You: bye
+Bot: Goodbye, take care!
+
+
+============================================================
+CONVERSATION ENDED: 2026-07-01 17:50:43
+Interested Courses: Python Programming
+Preferred Timings: Not specified
